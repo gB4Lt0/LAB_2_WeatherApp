@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "xxbF5gXSCWGOi9DsZGhyEgHp+RjTqckikIUNQCTMjhTaPeZdkjxPdY7go9B5VGtYAE8Ladp51KOnZ3JneoD5Wg==",
+  "success": true,
+  "projectFilePath": "D:\\MyFolder\\Home_work\\FullStack_PM\\LAB_2\\LAB_2\\LAB_2\\LAB_2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Balto\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "C:\\Users\\Balto\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512",
+    "C:\\Users\\Balto\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\Balto\\.nuget\\packages\\system.text.json\\7.0.3\\system.text.json.7.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LAB_2.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LAB_2
 {
-    public class DBManager
+    public class DataBaseManager
     {
         private const string ConnectionString = "Data Source=database.db; Version = 3; New = True; Compress = True;";
 
         private readonly SQLiteConnection _sqLiteConnection;
 
-        public DBManager()
+        public DataBaseManager()
         {
             _sqLiteConnection = new SQLiteConnection(ConnectionString);
             try
@@ -41,13 +42,14 @@ namespace LAB_2
             sqLiteCommand.ExecuteNonQuery();
         }
 
-        public void InsertData(MyWeatherForecast wfs)
+        public void AddData(MyWeatherForecast wfs)
         {
-            string insertQuery = $"INSERT INTO WeatherForecast " +
-                                 $"(city, dt_text, temp, wind_speed, weather_main, weather_description) " +
-                                 $"VALUES(@city ,@dtText, @temp, @windSpeed, @weatherMain, @weatherDescription" +
-                                 $")";
-            using (SQLiteCommand command = new SQLiteCommand(insertQuery, _sqLiteConnection))
+            StringBuilder queryBuilder = new StringBuilder();
+            queryBuilder.Append("INSERT INTO WeatherForecast ")
+                        .Append("(city, dt_text, temp, wind_speed, weather_main, weather_description) ")
+                        .Append("VALUES(@city, @dtText, @temp, @windSpeed, @weatherMain, @weatherDescription)");
+
+            using (SQLiteCommand command = new SQLiteCommand(queryBuilder.ToString(), _sqLiteConnection))
             {
                 command.Parameters.AddWithValue("@city", wfs.City);
                 command.Parameters.AddWithValue("@dtText", wfs.DataTimeText);
@@ -59,7 +61,7 @@ namespace LAB_2
             }
         }
 
-        public List<MyWeatherForecast> ReadData()
+        public List<MyWeatherForecast> GetData()
         {
             SQLiteCommand sqLiteCommand = _sqLiteConnection.CreateCommand();
             sqLiteCommand.CommandText = "SELECT * FROM WeatherForecast";
